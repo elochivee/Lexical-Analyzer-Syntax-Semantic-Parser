@@ -1,0 +1,15 @@
+%{
+#include "calc.h"
+%}
+
+%option noyywrap
+
+
+%%
+
+[0-9]+           { yylval = atoi(yytext); return NUMBER; }
+[+\-*/()]        { return yytext[0]; }
+[ \t\n]          ;
+.               { printf("Invalid character: %s\n", yytext); }
+
+%%
